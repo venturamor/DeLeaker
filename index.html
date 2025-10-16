@@ -339,25 +339,33 @@
 <!-- </section> --> 
 <!-- End video carousel -->
 
-<section id="deleaker-demo">
+
+<section id="deleaker-demo" style="text-align:center; padding:2rem;">
   <h2>🧠 DeLeaker Demo</h2>
-  <p class="subtitle">Click the image to mitigate semantic image!</p>
+  <p>Click the image to mitigate semantic leakage!</p>
 
   <div class="gallery">
     <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-inner">
         <div class="flip-front">
-          <img src="assets/images/early_entity_masks-1.png" alt="Original">
-          <p class="caption">"A cow and a horse in a farm" — Original</p>
+          <img src="https://picsum.photos/400/400?random=1" alt="Original">
+          <p class="caption">Original</p>
         </div>
         <div class="flip-back">
-          <img src="assets/images/smoothing_mask_history-1.png" alt="DeLeaker">
-          <p class="caption">"A cow and a horse in a farm" — DeLeaker</p>
+          <img src="https://picsum.photos/400/400?random=2" alt="DeLeaker">
+          <p class="caption">DeLeaker</p>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  // only needed if you want external control instead of inline onclick
+  function flipCard(card) {
+    card.classList.toggle("flipped");
+  }
+</script>
 
 
 
