@@ -748,22 +748,24 @@ a:focus {
     box-shadow: none !important;
   }
 }
-
-
-/* === DeLeaker flip-card demo === */
+/* === DeLeaker Flip Gallery - Conflict Safe === */
 .gallery {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
   gap: 2rem;
   margin-top: 2rem;
+  padding: 1rem;
 }
 
 .gallery .flip-card {
-  width: 300px;
+  width: clamp(220px, 25vw, 300px);
   aspect-ratio: 1 / 1;
   perspective: 1000px;
   cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
 }
 
 .gallery .flip-inner {
@@ -771,11 +773,11 @@ a:focus {
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
-  transition: transform 0.8s ease;
-  border-radius: 12px;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--border-radius);
   overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: var(--shadow-md);
+  background: var(--background-primary);
 }
 
 .gallery .flip-card.flipped .flip-inner {
@@ -785,16 +787,14 @@ a:focus {
 .gallery .flip-front,
 .gallery .flip-back {
   position: absolute;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   backface-visibility: hidden;
-  top: 0;
-  left: 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: center;
   text-align: center;
+  border-radius: inherit;
 }
 
 .gallery .flip-front img,
@@ -803,6 +803,9 @@ a:focus {
   height: 85%;
   object-fit: cover;
   display: block;
+  margin: 0 !important; /* override global image margins */
+  border-radius: 0;
+  box-shadow: none !important;
 }
 
 .gallery .flip-back {
@@ -810,10 +813,23 @@ a:focus {
 }
 
 .gallery .caption {
-  font-size: 0.85rem;
-  color: #333;
-  background: rgba(255, 255, 255, 0.8);
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.9);
   width: 100%;
-  padding: 4px 0;
+  padding: 6px 0;
   margin: 0;
+  font-weight: 500;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery {
+    gap: 1rem;
+  }
+  .gallery .flip-card {
+    width: 90%;
+    max-width: 280px;
+  }
 }
