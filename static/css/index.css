@@ -750,47 +750,70 @@ a:focus {
 }
 
 
-/* flip*/
-/* === Flip effect core === */
-.flip-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;       /* keeps it square regardless of screen */
+/* === DeLeaker flip-card demo === */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.gallery .flip-card {
+  width: 300px;
+  aspect-ratio: 1 / 1;
   perspective: 1000px;
   cursor: pointer;
 }
 
-.flip-inner {
+.gallery .flip-inner {
   position: relative;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
   transition: transform 0.8s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 }
 
-.flip-card.flipped .flip-inner {
+.gallery .flip-card.flipped .flip-inner {
   transform: rotateY(180deg);
 }
 
-.flip-front,
-.flip-back {
+.gallery .flip-front,
+.gallery .flip-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
   top: 0;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
 }
 
-.flip-front img,
-.flip-back img {
+.gallery .flip-front img,
+.gallery .flip-back img {
   width: 100%;
-  height: 100%;
+  height: 85%;
   object-fit: cover;
   display: block;
 }
 
-.flip-back {
+.gallery .flip-back {
   transform: rotateY(180deg);
 }
 
+.gallery .caption {
+  font-size: 0.85rem;
+  color: #333;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  padding: 4px 0;
+  margin: 0;
+}
