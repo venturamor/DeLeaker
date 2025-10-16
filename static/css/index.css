@@ -823,6 +823,27 @@ a:focus {
   border-top: 1px solid var(--border-color);
 }
 
+/* === DeLeaker flip layout tweak === */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;                /* allows wrapping to new line on small screens */
+  justify-content: center;        /* centers the row */
+  align-items: flex-start;
+  gap: 2rem;                      /* spacing between cards */
+  margin: 2rem auto;
+  max-width: 1200px;              /* keeps it nicely contained */
+  overflow: visible;
+}
+
+.gallery .flip-card {
+  flex: 1 1 300px;                /* responsive square sizing */
+  max-width: 300px;               /* limit width so they stay square-ish */
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
   .gallery {
@@ -831,5 +852,22 @@ a:focus {
   .gallery .flip-card {
     width: 90%;
     max-width: 280px;
+  }
+}
+
+/* === DeLeaker flip layout tweak === */
+@media (max-width: 768px) {
+  .gallery {
+    gap: 1rem;
+  }
+  .gallery .flip-card {
+    flex: 1 1 45%;
+    max-width: 240px;
+  }
+}
+@media (max-width: 480px) {
+  .gallery .flip-card {
+    flex: 1 1 90%;
+    max-width: 90%;
   }
 }
