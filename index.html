@@ -43,6 +43,9 @@
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
+
+  <script src="static/js/script.js"></script>
+
 </head>
 <body>
 
@@ -336,19 +339,37 @@
 <!-- </section> --> 
 <!-- End video carousel -->
 
-<div class="container">
-  <div class="img-comp-container">
-    <div class="img-comp-img">
-      <img src="assets/images/smoothing_mask_history-1.png" width="100%">
+
+  <h1>🧠 DeLeaker Demo</h1>
+  <p class="subtitle">Click the image to mitigate semantic image!</p>
+
+  <div class="gallery">
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="assets/images/early_entity_masks-1.png" alt="Original">
+          <p class="caption">"A cow and a horse in a farm" — Original</p>
+        </div>
+        <div class="flip-back">
+          <img src="assets/images/smoothing_mask_history-1.png" alt="DeLeaker">
+          <p class="caption">"A cow and a horse in a farm" — DeLeaker</p>
+        </div>
+      </div>
     </div>
-    <div class="img-comp-img img-comp-overlay">
-      <img src="assets/images/early_entity_masks-1.png" width="100%">
+
+    <div class="flip-card" onclick="flipCard(this)">
+      <div class="flip-inner">
+        <div class="flip-front">
+          <img src="assets/strawberry_before.png" alt="Original">
+          <p class="caption">"A strawberry, a radish and a cherry sit together" — Original</p>
+        </div>
+        <div class="flip-back">
+          <img src="assets/strawberry_after.png" alt="DeLeaker">
+          <p class="caption">"A strawberry, a radish and a cherry sit together" — DeLeaker</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
-
-<script src="script.js"></script>
-
 
 
 
