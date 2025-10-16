@@ -339,11 +339,12 @@
 <!-- </section> --> 
 <!-- End video carousel -->
 
-<section id="demo">
+<section id="deleaker-demo">
   <h1>🧠 DeLeaker Demo</h1>
   <p class="subtitle">Click the image to mitigate semantic image!</p>
+
   <div class="gallery">
-    <div class="flip-card" onclick="flipCard(this)">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
       <div class="flip-inner">
         <div class="flip-front">
           <img src="assets/images/early_entity_masks-1.png" alt="Original">
@@ -355,6 +356,7 @@
         </div>
       </div>
     </div>
+  </div>
 </section>
 
 
