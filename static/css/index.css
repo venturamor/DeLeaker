@@ -769,7 +769,7 @@ a:focus {
   width: 100%;
   height: 100%;
   transition: transform 0.7s;
-  transform-style: preserve-d;
+  transform-style: preserve-3d;
   border-radius: 10px; /* Optional: rounded corners */
   box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Optional: nice shadow */
   overflow: hidden; /* Ensures image corners are also rounded */
