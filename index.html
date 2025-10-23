@@ -282,6 +282,27 @@
 </section>
 <!-- End paper abstract -->
 
+
+<figure style="margin-top: 2rem; margin-bottom: 2rem;">
+    
+    <img src="static/images/deleaker_scheme3-1.png" 
+         alt="Diagram of the automatic evaluation pipeline" 
+         style="width: 100%; max-width: 900px; height: auto; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ddd;">
+
+    <figcaption class="subtitle has-text-centered" style="margin-top: 1rem;">
+      An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation. The pipeline consists of three main steps: (1) visual difference extraction, (2) typicality assessment,
+          and (3) comparative ranking. Step 1 is divided into two parts: one based solely on the input prompt
+          and the other employs reference images generated for each entity. The VLM (Gemini) returns two
+          independent descriptions, which are then aggregated into a unified list of salient visual differences
+          (not shown in the figure). Step 2 includes four typicality questions, one for each entity in each image
+          (denoted using “<>”), guided by the features identified in Step 1. Step 3 employs the outputs of Step
+          2 to compare both images. It produces a classification indicating the preferred image (Image 1 or
+          Image 2) and the magnitude of change (minor or major). 
+    </figcaption>
+
+</figure>
+
+
 <section id="deleaker-demo" style="text-align:center; padding:2rem;">
   <h2>🧠 DeLeaker Demo</h2>
   <p>Click the image to mitigate semantic leakage!</p>
@@ -328,7 +349,7 @@
           </h2>
         </div>
         <div class="item">
-          <!-- Centered image -->
+          <!-- Centered image
           <div style="text-align: center;">
             <img src="static/images/deleaker_scheme3-1.png" alt="method" style="width: 500px; height: auto;"/>
           </div>
@@ -342,7 +363,7 @@
             shows how entities interact, where colors denote different interaction regions. The final output (right)
             demonstrates how our method mitigates leakage compared to the original image. -->
           </h2>
-        </div>
+        </div> -->
         <div class="item">
           <!-- Centered image -->
           <div style="text-align: center;">
