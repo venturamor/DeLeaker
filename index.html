@@ -57,7 +57,7 @@
   <meta name="citation_author" content="Toker, Michael">
   <meta name="citation_publication_date" content="2025">
   <meta name="citation_conference_title" content="Under Review">
-  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2510.15015">tation_title" content="P
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2510.15015">
   
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
@@ -283,11 +283,12 @@
 <!-- End paper abstract -->
 
 
-<figure style="margin-top: 2rem; margin-bottom: 2rem;">
+
+<!-- <figure style="margin-top: 2rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
     
     <img src="static/images/deleaker_scheme3-1.png" 
-         alt="Diagram of the automatic evaluation pipeline" 
-         style="width: 100%; max-width: 900px; height: auto; display: block; margin-left: auto; margin-right: auto; border: 1px solid #ddd;">
+         alt="An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation." 
+         style="width: 100%; height: auto; display: block; border: 1px solid #ddd;">
 
     <figcaption class="subtitle has-text-centered" style="margin-top: 1rem;">
       An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation. The pipeline consists of three main steps: (1) visual difference extraction, (2) typicality assessment,
@@ -297,10 +298,42 @@
           (not shown in the figure). Step 2 includes four typicality questions, one for each entity in each image
           (denoted using “<>”), guided by the features identified in Step 1. Step 3 employs the outputs of Step
           2 to compare both images. It produces a classification indicating the preferred image (Image 1 or
-          Image 2) and the magnitude of change (minor or major). 
-    </figcaption>
+          Image 2) and the magnitude of change (minor or major).     </figcaption>
 
-</figure>
+</figure> -->
+
+<section class="section hero is-light"> 
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths"> 
+        
+        <h2 class="title is-3" style="border-bottom: 2px solid #ff3860; padding-bottom: 0.5rem; margin-bottom: 2rem;">
+          Automatic Evaluation Pipeline
+        </h2>
+        
+        <figure style="margin-top: 2rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
+            
+            <img src="static/images/deleaker_scheme3-1.png" 
+                 alt="An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation." 
+                 style="width: 100%; height: auto; display: block; border: 1px solid #ddd;">
+        
+            <figcaption class="content has-text-justified" style="margin-top: 1rem;">
+              An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation. The pipeline consists of three main steps: (1) visual difference extraction, (2) typicality assessment,
+                  and (3) comparative ranking. Step 1 is divided into two parts: one based solely on the input prompt
+                  and the other employs reference images generated for each entity. The VLM (Gemini) returns two
+                  independent descriptions, which are then aggregated into a unified list of salient visual differences
+                  (not shown in the figure). Step 2 includes four typicality questions, one for each entity in each image
+                  (denoted using “&lt;&gt;”), guided by the features identified in Step 1. Step 3 employs the outputs of Step
+                  2 to compare both images. It produces a classification indicating the preferred image (Image 1 or
+                  Image 2) and the magnitude of change (minor or major).     
+            </figcaption>
+        
+        </figure>
+
+      </div>
+    </div>
+  </div>
+</section>
 
 
 <section id="deleaker-demo" style="text-align:center; padding:2rem;">
