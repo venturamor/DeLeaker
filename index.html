@@ -23,41 +23,41 @@
   <!-- TODO: Same as paper title above -->
   <meta property="og:title" content="DeLeaker: Dynamic Inference-Time Reweighting For Semantic Leakge Mitigation In Text-to-Image Models">
   <!-- TODO: Same as description above -->
-  <meta property="og:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta property="og:description" content="DeLeaker mitigates semantic leakage in text-to-image models by dynamically reweighting attention maps during the diffusion process, outperforming existing methods without compromising quality.">
   <!-- TODO: Replace with your actual website URL -->
   <meta property="og:url" content="https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE">
   <!-- TODO: Create a 1200x630px preview image and update path -->
   <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="PDeLeaker: Dynamic Inference-Time Reweighting For Semantic Leakge Mitigation In Text-to-Image Models - Research Preview">
-  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
-  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="og:image:alt" content="DeLeaker: Dynamic Inference-Time Reweighting For Semantic Leakge Mitigation In Text-to-Image Models - Research Preview">
+  <meta property="article:published_time" content="2025-16-10T00:00:00.000Z">
+  <meta property="article:author" content="Mor Ventura">
   <meta property="article:section" content="Research">
-  <meta property="article:tag" content="KEYWORD1">
-  <meta property="article:tag" content="KEYWORD2">
+  <meta property="article:tag" content="Text-to-Image">
+  <meta property="article:tag" content="Semantic Leakage">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <!-- TODO: Replace with your lab/institution Twitter handle -->
-  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with your lab/institution Twitter handle
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE"> -->
   <!-- TODO: Replace with first author's Twitter handle -->
-  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <meta name="twitter:creator" content="@mor_ventura95">
   <!-- TODO: Same as paper title above -->
   <meta name="twitter:title" content="DeLeaker: Dynamic Inference-Time Reweighting For Semantic Leakge Mitigation In Text-to-Image Models">
   <!-- TODO: Same as description above -->
-  <meta name="twitter:description" content="BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS">
+  <meta name="twitter:description" content="DeLeaker mitigates semantic leakage in text-to-image models by dynamically reweighting attention maps during the diffusion process, outperforming existing methods without compromising quality.">
   <!-- TODO: Same as social preview image above -->
   <meta name="twitter:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
   <meta name="twitter:image:alt" content="DeLeaker: Dynamic Inference-Time Reweighting For Semantic Leakge Mitigation In Text-to-Image Models - Research Preview">
 
   <!-- Academic/Research Specific -->
   <meta name="ciAPER_TITLE">
-  <meta name="citation_author" content="FIRST_AUTHOR_LAST, FIRST_AUTHOR_FIRST">
-  <meta name="citation_author" content="SECOND_AUTHOR_LAST, SECOND_AUTHOR_FIRST">
-  <meta name="citation_publication_date" content="2024">
-  <meta name="citation_conference_title" content="CONFERENCE_NAME">
-  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">tation_title" content="P
+  <meta name="citation_author" content="Ventura, Mor">
+  <meta name="citation_author" content="Toker, Michael">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="Under Review">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2510.15015">tation_title" content="P
   
   <!-- Additional SEO -->
   <meta name="theme-color" content="#2563eb">
@@ -196,13 +196,13 @@
         <div class="columns is-centered">
           <div class="column has-text-centered">
             <!-- TODO: Replace with your paper title -->
-            <h1 class="title is-1 publication-title">Academic Project Page</h1>
+            <h1 class="title is-1 publication-title">DeLeaker: Dynamic Inference-Time Reweighting For Semantic Leakge Mitigation In Text-to-Image Models</h1>
             <div class="is-size-5 publication-authors">
               <!-- TODO: Replace with your paper authors and their personal links -->
               <span class="author-block">
-                <a href="https://venturamor.github.io/" target="_blank">Mor Ventura</a>,</span>
+                <a href="https://venturamor.github.io/" target="_blank">Mor Ventura</a><sup>*</sup>,</span>
                 <span class="author-block">
-                  <a href="https://tokeron.github.io/" target="_blank">Michael Toker</a>,</span>
+                  <a href="https://tokeron.github.io/" target="_blank">Michael Toker</a><sup>*</sup>,</span>
                   <span class="author-block">
                     <a href="https://orpatashnik.github.io/" target="_blank">Or Patashnik</a>,</span>
                   <span class="author-block">
@@ -214,7 +214,7 @@
 
                   <div class="is-size-5 publication-authors">
                     <!-- TODO: Replace with your institution and conference/journal info -->
-                    <span class="author-block">Institution Name<br>Conference name and year</span>
+                    <span class="author-block">Technion - Israel Institute of Technology<br>Tel-Aviv University</span>
                     <!-- TODO: Remove this line if no equal contribution -->
                     <span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span>
                   </div>
@@ -333,13 +333,14 @@
             <img src="static/images/deleaker_scheme3-1.png" alt="method" style="width: 500px; height: auto;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-             DeLeaker scheme. Our method applies three attention-based interventions during the
-            diffusion process: (A) extract automatically entity-specific masks from early image–text attention and
+             DeLeaker Scheme. Our method applies three attention-based interventions during the
+            diffusion process.
+            <!-- : (A) extract automatically entity-specific masks from early image–text attention and
             refine them with smoothing; (B) suppress cross-entity leakage by reducing attention across entities
             in both image–text and image–image interactions; and (C) strengthen self-identity by increasing
             attention from each entity’s text tokens to its own image tokens. The attention map legend (left)
             shows how entities interact, where colors denote different interaction regions. The final output (right)
-            demonstrates how our method mitigates leakage compared to the original image.
+            demonstrates how our method mitigates leakage compared to the original image. -->
           </h2>
         </div>
         <div class="item">
@@ -349,14 +350,14 @@
           </div>
           <h2 class="subtitle has-text-centered">
            An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation.
-          The pipeline consists of three main steps: (1) visual difference extraction, (2) typicality assessment,
+          <!-- The pipeline consists of three main steps: (1) visual difference extraction, (2) typicality assessment,
           and (3) comparative ranking. Step 1 is divided into two parts: one based solely on the input prompt
           and the other employs reference images generated for each entity. The VLM (Gemini) returns two
           independent descriptions, which are then aggregated into a unified list of salient visual differences
           (not shown in the figure). Step 2 includes four typicality questions, one for each entity in each image
           (denoted using “<>”), guided by the features identified in Step 1. Step 3 employs the outputs of Step
           2 to compare both images. It produces a classification indicating the preferred image (Image 1 or
-          Image 2) and the magnitude of change (minor or major). 
+          Image 2) and the magnitude of change (minor or major).  -->
           </h2>
         </div>
         <div class="item">
@@ -365,7 +366,7 @@
             <img src="static/images/qualitative_baselines2-1.png" alt="qualitative baselines" style="width: 500px; height: auto;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Qualitative comparison across five baselines (columns) and three examples (rows)
+            Qualitative comparison across five baselines (columns) and three examples (rows).
           </h2>
         </div>
         <div class="item">
@@ -374,12 +375,13 @@
             <img src="static/images/main_res_table_cropped-1.png" alt="semantic leakage mitigation" style="width: 500px; height: auto;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-          Automatic Evaluation Scores of Semantic Leakage Mitigation. We compare our method,
+          Automatic Evaluation Scores of Semantic Leakage Mitigation. 
+          <!-- We compare our method,
           DeLeaker (bottom rows), against layout-based (top) and prompt-based (middle) baselines. The
           main scores represent the percentage of samples labeled as Mitigation (Major/Minor), No Change,
           or Degradation (Major/Minor), summarized by a stacked bar visualization. These are presented
           alongside Preservation metrics (VQAScore and LPIPS). Arrows (↑/↓) indicate the desired direction
-          for improvement for each metric.  
+          for improvement for each metric.   -->
           </h2>
         </div>
         <div class="item">
@@ -388,11 +390,12 @@
             <img src="static/images/ablation_table_cropped-1.png" alt="ablation" style="width: 600px; height: auto;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Configurations are divided into two types: (1) W/O rows (top
+            DeLeaker Component Ablation. 
+            <!-- Configurations are divided into two types: (1) W/O rows (top
             four) represent the removal/addition of a specific component, while (2) Only rows (bottom three)
             isolate each component independently. Ratios are reported relative to the full DeLeaker scores
             baseline, with values closer to 1.0 indicating similarity. Darker hues indicate stronger contributions,
-            color-coded as positive (blue) and negative (red) .
+            color-coded as positive (blue) and negative (red) . -->
           </h2>
         </div>
         <div class="item">
@@ -402,9 +405,9 @@
           </div>
           <h2 class="subtitle has-text-centered">
           Entity masks are accurate even in the first diffusion step (50 blocks; green frame).
-          This is particularly evident in semantic leakage cases, where these initially clear masks begin to blend
+          <!-- This is particularly evident in semantic leakage cases, where these initially clear masks begin to blend
           by a middle step (660 blocks; red frame). The full process consists of 20 diffusion steps (1140 blocks
-          total). 
+          total).  -->
           </h2>
         </div>
         <div class="item">
@@ -413,9 +416,10 @@
             <img src="static/images/smoothing_mask_history-1.png" alt="smoothing in deleaker" style="width: 500px; height: auto;"/>
           </div>
           <h2 class="subtitle has-text-centered">
-            Ablation study of DeLeaker’s smoothing techniques on entity masks. The figure
+            Ablation study of DeLeaker’s smoothing techniques on entity masks. 
+            <!-- The figure
             demonstrates the impact of two components: (Top) temporal smoothing and (Bottom) spatial
-            smoothing.
+            smoothing. -->
           </h2>
         </div>
       </div>
