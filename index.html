@@ -308,7 +308,7 @@
       <div class="column is-four-fifths"> 
         
         <h2 class="title is-3" style="border-bottom: 2px solid #ff3860; padding-bottom: 0.5rem; margin-bottom: 2rem;">
-          Automatic Evaluation Pipeline
+          DeLeaker Scheme
         </h2>
         
         <figure style="margin-top: 2rem; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
@@ -318,14 +318,12 @@
                  style="width: 100%; height: auto; display: block; border: 1px solid #ddd;">
         
             <figcaption class="content has-text-justified" style="margin-top: 1rem;">
-              An overview of the automatic evaluation pipeline for assessing semantic leakage mitigation. The pipeline consists of three main steps: (1) visual difference extraction, (2) typicality assessment,
-                  and (3) comparative ranking. Step 1 is divided into two parts: one based solely on the input prompt
-                  and the other employs reference images generated for each entity. The VLM (Gemini) returns two
-                  independent descriptions, which are then aggregated into a unified list of salient visual differences
-                  (not shown in the figure). Step 2 includes four typicality questions, one for each entity in each image
-                  (denoted using “&lt;&gt;”), guided by the features identified in Step 1. Step 3 employs the outputs of Step
-                  2 to compare both images. It produces a classification indicating the preferred image (Image 1 or
-                  Image 2) and the magnitude of change (minor or major).     
+               Our method applies three attention-based interventions during the diffusion process.(A) extract automatically entity-specific masks from early image–text attention and
+            refine them with smoothing; (B) suppress cross-entity leakage by reducing attention across entities
+            in both image–text and image–image interactions; and (C) strengthen self-identity by increasing
+            attention from each entity’s text tokens to its own image tokens. The attention map legend (left)
+            shows how entities interact, where colors denote different interaction regions. The final output (right)
+            demonstrates how our method mitigates leakage compared to the original image.  
             </figcaption>
         
         </figure>
