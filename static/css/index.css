@@ -748,126 +748,75 @@ a:focus {
     box-shadow: none !important;
   }
 }
-/* === DeLeaker Flip Gallery - Conflict Safe === */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 2rem;
-  margin-top: 2rem;
-  padding: 1rem;
-}
+/* ==================================================================
+   Flip Card Demo Styles (Bulma Compatible)
+   ================================================================== */
 
-.gallery .flip-card {
-  width: clamp(220px, 25vw, 300px);
-  aspect-ratio: 1 / 1;
-  perspective: 1000px;
+/* * The .column class from Bulma is already handling the layout (the grid).
+ * We just need to style the .flip-card inside it.
+ */
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* This makes the card square */
+  perspective: 1000px; /* 3D effect for flipping */
   cursor: pointer;
-  position: relative;
-  flex-shrink: 0;
 }
 
-.gallery .flip-inner {
+/* The inner element that actually rotates */
+.flip-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  background: var(--background-primary);
+  transition: transform 0.7s;
+  transform-style: preserve-d;
+  border-radius: 10px; /* Optional: rounded corners */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Optional: nice shadow */
+  overflow: hidden; /* Ensures image corners are also rounded */
 }
 
-.gallery .flip-card.flipped .flip-inner {
+/* This class is added by JavaScript when you click */
+.flip-card.flipped .flip-inner {
   transform: rotateY(180deg);
 }
 
-.gallery .flip-front,
-.gallery .flip-back {
+/* * This is the most important part!
+ * 'position: absolute' stacks the front and back on top of each other.
+ */
+.flip-front,
+.flip-back {
   position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: center;
-  border-radius: inherit;
-}
-
-.gallery .flip-front img,
-.gallery .flip-back img {
   width: 100%;
-  height: 85%;
-  object-fit: cover;
-  display: block;
-  margin: 0 !important; /* override global image margins */
-  border-radius: 0;
-  box-shadow: none !important;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* For Safari */
+  backface-visibility: hidden;
 }
 
-.gallery .flip-back {
+/* Style for the back face (it starts pre-flipped) */
+.flip-back {
   transform: rotateY(180deg);
 }
 
-.gallery .caption {
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.9);
+/* Styling for the images inside the card */
+.flip-front img,
+.flip-back img {
   width: 100%;
-  padding: 6px 0;
-  margin: 0;
+  height: 100%;
+  object-fit: cover; /* Ensures images fill the card */
+  display: block;
+}
+
+/* Styling for the caption text */
+.flip-card .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 0.9rem;
   font-weight: 500;
-  border-top: 1px solid var(--border-color);
-}
-
-/* === DeLeaker flip layout tweak === */
-.gallery {
-  display: flex;
-  flex-wrap: wrap;                /* allows wrapping to new line on small screens */
-  justify-content: center;        /* centers the row */
-  align-items: flex-start;
-  gap: 2rem;                      /* spacing between cards */
-  margin: 2rem auto;
-  max-width: 1200px;              /* keeps it nicely contained */
-  overflow: visible;
-}
-
-.gallery .flip-card {
-  flex: 1 1 300px;                /* responsive square sizing */
-  max-width: 300px;               /* limit width so they stay square-ish */
-  aspect-ratio: 1 / 1;
-  perspective: 1000px;
-  cursor: pointer;
-}
-
-
-/* Responsive */
-@media (max-width: 768px) {
-  .gallery {
-    gap: 1rem;
-  }
-  .gallery .flip-card {
-    width: 90%;
-    max-width: 280px;
-  }
-}
-
-/* === DeLeaker flip layout tweak === */
-@media (max-width: 768px) {
-  .gallery {
-    gap: 1rem;
-  }
-  .gallery .flip-card {
-    flex: 1 1 45%;
-    max-width: 240px;
-  }
-}
-@media (max-width: 480px) {
-  .gallery .flip-card {
-    flex: 1 1 90%;
-    max-width: 90%;
-  }
+  padding: 8px;
+  margin: 0;
+  text-align: center;
 }
