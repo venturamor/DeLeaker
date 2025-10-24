@@ -182,19 +182,24 @@
 
 <style>
     .flip-inner {
-      /* This enables 3D space */
       transform-style: preserve-3d !important;
     }
 
     .flip-front,
     .flip-back {
-      /* This is the rule that is failing to load */
-      /* It hides the side you're not supposed to see */
+      /* THIS IS THE RULE I MISSED! */
+      /* It stacks the front and back on top of each other. */
+      position: absolute !importanT;
+
+      /* This hides the side you're not supposed to see */
       -webkit-backface-visibility: hidden !important;
       backface-visibility: hidden !important;
       
-      /* This stacks the cards */
-      position: absolute !important;
+      /* These just ensure it fills the card */
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
     }
 
     .flip-back {
@@ -202,7 +207,7 @@
       transform: rotateY(180deg) !important;
     }
   </style>
-
+  
 </head>
 <body>
 
@@ -393,7 +398,7 @@
         
         <div class="columns is-multiline is-mobile is-centered">
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -408,7 +413,7 @@
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -423,7 +428,7 @@
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -438,7 +443,7 @@
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -453,7 +458,7 @@
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -468,22 +473,22 @@
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
-                  <img src="https://picsum.photos/400/400?random=11" alt="Original">
+                  <img src="static/images/parrot_clean-min.png" alt="Original">
                   <p class="caption">Original</p>
                 </div>
                 <div class="flip-back">
-                  <img src="https://picsum.photos/400/400?random=12" alt="DeLeaker">
+                  <img src="static/images/parrot_delelaker-min.png" alt="DeLeaker">
                   <p class="caption">DeLeaker</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <!-- <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -498,7 +503,7 @@
             </div>
           </div>
 
-          <div class="column is-one-third-tablet">
+          <div class="column is-one-half-tablet">
             <div class="flip-card" onclick="this.classList.toggle('flipped')" title="Click to flip">
               <div class="flip-inner">
                 <div class="flip-front">
@@ -511,7 +516,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div> </div>
     </div>
