@@ -179,6 +179,34 @@
   }
   </script> -->
 
+<style>
+    .flip-inner {
+      /* This enables 3D space */
+      transform-style: preserve-3d !important;
+    }
+
+    .flip-front,
+    .flip-back {
+      /* This stacks the front and back on top of each other. */
+      position: absolute !important;
+
+      /* This hides the side you're not supposed to see */
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      
+      /* These just ensure it fills the card */
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
+    }
+
+    .flip-back {
+      /* This pre-rotates the back card */
+      transform: rotateY(180deg) !important;
+    }
+  </style>
+  
   
 </head>
 <body>
