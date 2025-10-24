@@ -179,7 +179,7 @@
   }
   </script> -->
   
- <style>
+<style>
 .flip-card {
   aspect-ratio: 1 / 1;
   perspective: 1000px;
@@ -215,10 +215,11 @@
 }
 
 .flip-front {
-  /* transform: rotateY(0deg); */
+  /* This element faces forward by default, no transform is needed. */
 }
 
 .flip-back {
+  /* This element starts rotated 180 degrees, so it's the "back" */
   transform: rotateY(180deg);
 }
 
