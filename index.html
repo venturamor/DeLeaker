@@ -178,54 +178,74 @@
     ]
   }
   </script> -->
-
 <style>
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 200px;
-  perspective: 1000px;
-}
+    .flip-card {
+      /* Makes the card square and responsive */
+      aspect-ratio: 1 / 1; 
+      perspective: 1000px;
+      cursor: pointer;
+    }
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-}
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      /* This enables 3D space */
+      transform-style: preserve-3d; 
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
 
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
+    /* This rule works with your 'onclick' JavaScript */
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
 
-.flip-card-front,
-.flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  border-radius: 12px;
-  overflow: hidden;
-}
+    /* This stacks the front and back cards */
+    .flip-front,
+    .flip-back {
+      position: absolute !important;
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
 
-.flip-card-front {
-  background-color: #fff;
-}
+      /* THIS IS THE RULE THAT FIXES THE MIRRORING */
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+    }
 
-.flip-card-back {
-  background-color: #f0f0f0;
-  transform: rotateY(180deg);
-}
+    /* This pre-rotates the back card */
+    .flip-back {
+      transform: rotateY(180deg) !important;
+    }
 
-.flip-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-</style>
-  
+    /* Styles for your image and caption */
+    .flip-front img,
+    .flip-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .flip-card .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px;
+      margin: 0;
+      text-align: center;
+    }
+  </style>
+
   
 </head>
 <body>
