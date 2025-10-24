@@ -178,6 +178,31 @@
     ]
   }
   </script> -->
+
+
+<style>
+    .flip-inner {
+      /* This enables 3D space */
+      transform-style: preserve-3d !important;
+    }
+
+    .flip-front,
+    .flip-back {
+      /* This is the rule that is failing to load */
+      /* It hides the side you're not supposed to see */
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+      
+      /* This stacks the cards */
+      position: absolute !important;
+    }
+
+    .flip-back {
+      /* This pre-rotates the back card */
+      transform: rotateY(180deg) !important;
+    }
+  </style>
+
 </head>
 <body>
 
