@@ -752,57 +752,56 @@ a:focus {
    Flip Card Demo Styles (Bulma Compatible)
    ================================================================== */
 
-/* * The .column class from Bulma is already handling the layout (the grid).
- * We just need to style the .flip-card inside it.
- */
 .flip-card {
   background-color: transparent;
   width: 100%;
-  aspect-ratio: 1 / 1; /* This makes the card square */
-  perspective: 1000px; /* 3D effect for flipping */
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
   cursor: pointer;
 }
 
-/* The inner element that actually rotates */
 .flip-inner {
   position: relative;
   width: 100%;
   height: 100%;
   transition: transform 0.7s;
-  transform-style: preserve-3d;
-  border-radius: 10px; /* Optional: rounded corners */
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Optional: nice shadow */
-  overflow: hidden; /* Ensures image corners are also rounded */
+  /* This enables 3D space */
+  transform-style: preserve-3d; 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 
-/* This class is added by JavaScript when you click */
+/* This class is added by JavaScript on click */
 .flip-card.flipped .flip-inner {
   transform: rotateY(180deg);
 }
 
-/* * This is the most important part!
- * 'position: absolute' stacks the front and back on top of each other.
+/* * THIS IS THE CRITICAL FIX:
+ * - 'position: absolute' stacks the front and back.
+ * - 'backface-visibility: hidden' hides the side you're not supposed to see.
  */
 .flip-front,
 .flip-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* For Safari */
+  /* This hides the back of the element when it's facing away */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
-/* Style for the back face (it starts pre-flipped) */
+/* The back face starts pre-rotated */
 .flip-back {
   transform: rotateY(180deg);
 }
 
-/* Styling for the images inside the card */
+/* Styling for the images inside */
 .flip-front img,
 .flip-back img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures images fill the card */
+  object-fit: cover;
   display: block;
 }
 
