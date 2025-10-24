@@ -178,6 +178,7 @@ x<!DOCTYPE html>
   ]
 }
 </script> -->
+
 <style>
   .flip-card {
     /* Makes the card square and responsive */
@@ -186,9 +187,6 @@ x<!DOCTYPE html>
     perspective: 1000px;
     cursor: pointer;
   }
-
-
-
 
   .flip-inner {
     position: relative;
@@ -205,15 +203,11 @@ x<!DOCTYPE html>
   }
 
 
-
-
   /* This rule works with your 'onclick' JavaScript */
   .flip-card.flipped .flip-inner {
    -webkit-transform: rotateY(180deg);
     transform: rotateY(180deg);
   }
-
-
 
 
   /* This stacks the front and back cards */
@@ -226,8 +220,6 @@ x<!DOCTYPE html>
     top: 0 !important;
 
 
-
-
     /* THIS IS THE RULE THAT FIXES THE MIRRORING */
     -webkit-backface-visibility: hidden !important;
     backface-visibility: hidden !important;
@@ -235,11 +227,10 @@ x<!DOCTYPE html>
 
 
 
-
  /* Ensure Safari treats the front as a transformed element */
  .flip-front {
-   -webkit-transform: rotateY(0deg);
-   transform: rotateY(0deg);
+   /* -webkit-transform: rotateY(0deg);
+   transform: rotateY(0deg); */
  }
 
 
