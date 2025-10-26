@@ -193,39 +193,38 @@ x<!DOCTYPE html>
   }
 
 
-  /* This stacks the front and back cards */
+  /* MODIFICATION #1:
+    Added will-change and removed !important.
+  */
   .flip-front,
   .flip-back {
-    position: absolute !important;
-    width: 100% !important;
-    height: 100% !important;
-    left: 0 !important;
-    top: 0 !important;
-
-
-    /* THIS IS THE RULE THAT FIXES THE MIRRORING */
-    -webkit-backface-visibility: hidden !important;
-    backface-visibility: hidden !important;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform; /* Add this for performance */
   }
 
+  /* MODIFICATION #2: (THE MAIN FIX)
+    Un-commented the transform. This forces the browser 
+    to respect the backface-visibility of this element.
+  */
+  .flip-front {
+    -webkit-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    /* z-index: 1; */ /* Sometimes helpful, but try without it first */
+  }
 
-
- /* Ensure Safari treats the front as a transformed element */
- .flip-front {
-   /* -webkit-transform: rotateY(0deg);
-   transform: rotateY(0deg); */
- }
-
-
-
-
-  /* This pre-rotates the back card */
+  /* MODIFICATION #3:
+    Removed !important. It's not necessary.
+  */
   .flip-back {
-   -webkit-transform: rotateY(180deg) !important;
-   transform: rotateY(180deg) !important;
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
   }
-
-
 
 
   /* Styles for your image and caption */
