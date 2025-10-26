@@ -165,11 +165,8 @@ x<!DOCTYPE html>
 <style>
 .flip-card {
   aspect-ratio: 1 / 1;
-  perspective: 1000px; /* Defines the 3D space */
+  perspective: 1000px;
   cursor: pointer;
-  
-  /* ADDED THIS: Helps some browsers understand the 3D context */
-  transform-style: preserve-3d; 
 }
 
 .flip-inner {
@@ -177,18 +174,18 @@ x<!DOCTYPE html>
   width: 100%;
   height: 100%;
   transition: transform 0.7s;
-  transform-style: preserve-3d; /* This is the flipping element */
+  transform-style: preserve-3d;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
 }
 
-/* When the card is flipped */
+/* Flip action */
 .flip-card.flipped .flip-inner {
   transform: rotateY(180deg);
 }
 
-/* Front and back faces */
+/* Faces */
 .flip-front,
 .flip-back {
   position: absolute;
@@ -196,24 +193,21 @@ x<!DOCTYPE html>
   height: 100%;
   top: 0;
   left: 0;
-  
-  /* These are critical */
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden; 
+  -webkit-backface-visibility: hidden;
 }
 
 .flip-front {
-  /* No transform needed. The line from before is gone. */
-  z-index: 2; /* Ensures front is "on top" by default */
+  z-index: 2;
+  transform: rotateY(0deg);
 }
 
 .flip-back {
-  /* Pre-rotated 180 degrees */
   transform: rotateY(180deg);
-  z-index: 1; /* Ensures back is "behind" by default */
+  z-index: 1;
 }
 
-/* Image and caption styling */
+/* Images */
 .flip-front img,
 .flip-back img {
   width: 100%;
@@ -222,6 +216,7 @@ x<!DOCTYPE html>
   display: block;
 }
 
+/* Caption */
 .flip-card .caption {
   position: absolute;
   bottom: 0;
@@ -234,10 +229,9 @@ x<!DOCTYPE html>
   padding: 8px;
   margin: 0;
   text-align: center;
-  /* Add z-index to make sure caption is always visible on its side */
   z-index: 3;
 }
-  </style>
+</style>
 
 
 </head>
