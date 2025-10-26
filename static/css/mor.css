@@ -1,0 +1,267 @@
+=== DeLeaker Flip Gallery - Conflict Safe ===
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 2rem;
+  padding: 1rem;
+}
+
+.gallery .flip-card {
+  width: clamp(220px, 25vw, 300px);
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gallery .flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--background-primary);
+}
+
+.gallery .flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.gallery .flip-front,
+.gallery .flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
+  border-radius: inherit;
+}
+
+.gallery .flip-front img,
+.gallery .flip-back img {
+  width: 100%;
+  height: 85%;
+  object-fit: cover;
+  display: block;
+  margin: 0 !important; /* override global image margins */
+  border-radius: 0;
+  box-shadow: none !important;
+}
+
+.gallery .flip-back {
+  transform: rotateY(180deg);
+}
+
+.gallery .caption {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.9);
+  width: 100%;
+  padding: 6px 0;
+  margin: 0;
+  font-weight: 500;
+  border-top: 1px solid var(--border-color);
+}
+
+/* === DeLeaker flip layout tweak === */
+.gallery {
+  display: flex;
+  flex-wrap: wrap;                /* allows wrapping to new line on small screens */
+  justify-content: center;        /* centers the row */
+  align-items: flex-start;
+  gap: 2rem;                      /* spacing between cards */
+  margin: 2rem auto;
+  max-width: 1200px;              /* keeps it nicely contained */
+  overflow: visible;
+}
+
+.gallery .flip-card {
+  flex: 1 1 300px;                /* responsive square sizing */
+  max-width: 300px;               /* limit width so they stay square-ish */
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery {
+    gap: 1rem;
+  }
+  .gallery .flip-card {
+    width: 90%;
+    max-width: 280px;
+  }
+}
+
+/* === DeLeaker flip layout tweak === */
+@media (max-width: 768px) {
+  .gallery {
+    gap: 1rem;
+  }
+  .gallery .flip-card {
+    flex: 1 1 45%;
+    max-width: 240px;
+  }
+}
+@media (max-width: 480px) {
+  .gallery .flip-card {
+    flex: 1 1 90%;
+    max-width: 90%;
+  }
+}
+
+
+
+/* ==================================================================
+   Flip Card Demo Styles (Bulma Compatible)
+   ================================================================== */
+
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  /* This enables 3D space */
+  transform-style: preserve-3d; 
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* This class is added by JavaScript on click */
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+/* * THIS IS THE CRITICAL FIX:
+ * - 'position: absolute' stacks the front and back.
+ * - 'backface-visibility: hidden' hides the side you're not supposed to see.
+ */
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* This hides the back of the element when it's facing away */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* The back face starts pre-rotated */
+.flip-back {
+  transform: rotateY(180deg);
+}
+
+/* Styling for the images inside */
+.flip-front img,
+.flip-back img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Styling for the caption text */
+.flip-card .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px;
+  margin: 0;
+  text-align: center;
+}
+
+
+
+
+
+    .flip-card {
+      /* Makes the card square and responsive */
+      aspect-ratio: 1 / 1; 
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      /* This enables 3D space */
+      transform-style: preserve-3d; 
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    /* This rule works with your 'onclick' JavaScript */
+    .flip-card.flipped .flip-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* This stacks the front and back cards */
+    .flip-front,
+    .flip-back {
+      position: absolute !important;
+      width: 100% !important;
+      height: 100% !important;
+      left: 0 !important;
+      top: 0 !important;
+
+      /* THIS IS THE RULE THAT FIXES THE MIRRORING */
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+    }
+
+    /* This pre-rotates the back card */
+    .flip-back {
+      transform: rotateY(180deg) !important;
+    }
+
+    /* Styles for your image and caption */
+    .flip-front img,
+    .flip-back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .flip-card .caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px;
+      margin: 0;
+      text-align: center;
+    }
