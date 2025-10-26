@@ -162,24 +162,35 @@
 </script>
  <-- Website/Organization Structured Data -->
 <style>
+/* Prevent parent containers from flattening 3D */
+#deleaker-demo,
+#deleaker-demo * {
+  transform: none !important;
+  filter: none !important;
+  perspective: none !important;
+}
+
+/* Flip card setup */
 .flip-card {
   aspect-ratio: 1 / 1;
   perspective: 1000px;
   cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
 }
 
 .flip-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
   transition: transform 0.8s ease-in-out;
+  transform-style: preserve-3d;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
 }
 
-/* Flip animation */
+/* Flip on click */
 .flip-card.flipped .flip-inner {
   transform: rotateY(180deg);
 }
@@ -194,7 +205,6 @@
   left: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transform-style: preserve-3d;
 }
 
 .flip-front {
@@ -230,12 +240,6 @@
   margin: 0;
   text-align: center;
   z-index: 3;
-}
-
-/* ✅ Critical Safari fix */
-.flip-card, .flip-inner, .flip-front, .flip-back {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 </style>
 
@@ -411,6 +415,7 @@
 
 
 
+<!-- Test HTML -->
 <div class="flip-card" onclick="this.classList.toggle('flipped')">
   <div class="flip-inner">
     <div class="flip-front">
