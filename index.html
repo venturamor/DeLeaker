@@ -161,88 +161,39 @@
 }
 </script>
  <-- Website/Organization Structured Data -->
+<!-- Put this CSS (simple card layout, no 3D) -->
 <style>
-/* Prevent parent containers from flattening 3D */
-#deleaker-demo,
-#deleaker-demo * {
-  transform: none !important;
-  filter: none !important;
-  perspective: none !important;
-}
-
-/* Flip card setup */
 .flip-card {
   aspect-ratio: 1 / 1;
-  perspective: 1000px;
   cursor: pointer;
   position: relative;
-  transform-style: preserve-3d;
-}
-
-.flip-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s ease-in-out;
-  transform-style: preserve-3d;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
 }
 
-/* Flip on click */
-.flip-card.flipped .flip-inner {
-  transform: rotateY(180deg);
-}
-
-/* Faces */
-.flip-front,
-.flip-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-}
-
-.flip-front {
-  transform: rotateY(0deg);
-  z-index: 2;
-}
-
-.flip-back {
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-
-/* Images */
-.flip-front img,
-.flip-back img {
+.flip-card img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  user-select: none;
+  pointer-events: none; /* let the container handle clicks */
 }
 
-/* Caption */
 .flip-card .caption {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  font-size: 0.9rem;
-  font-weight: 500;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
   padding: 8px;
-  margin: 0;
+  font-weight: 500;
   text-align: center;
-  z-index: 3;
+  box-sizing: border-box;
 }
 </style>
-
 
 
 </head>
@@ -412,6 +363,93 @@
   </div>
 </div>
 </section>
+
+
+
+
+<!-- Example cards: add data-front and data-back with image URLs -->
+<div class="columns is-multiline is-mobile is-centered">
+  <div class="column is-half-tablet">
+    <div class="flip-card"
+         role="button"
+         tabindex="0"
+         aria-pressed="false"
+         data-front="https://placekitten.com/600/600"
+         data-back="https://placebear.com/600/600"
+         data-front-caption="Original"
+         data-back-caption="DeLeaker"
+         title="Click to toggle">
+      <img src="https://placekitten.com/600/600" alt="Original image">
+      <p class="caption">Original</p>
+    </div>
+  </div>
+
+  <!-- copy the column block for each card and replace data-front/data-back -->
+  <div class="column is-half-tablet">
+    <div class="flip-card"
+         role="button"
+         tabindex="0"
+         aria-pressed="false"
+         data-front="static/images/cat_clean-min.png"
+         data-back="static/images/cat_delelaker-min.png"
+         data-front-caption="Original"
+         data-back-caption="DeLeaker"
+         title="Click to toggle">
+      <img src="static/images/cat_clean-min.png" alt="Original">
+      <p class="caption">Original</p>
+    </div>
+  </div>
+</div>
+
+<!-- JS: toggles src + caption, supports keyboard (Enter/Space) -->
+<script>
+document.addEventListener('click', (e) => {
+  const card = e.target.closest('.flip-card');
+  if (!card) return;
+  toggleCard(card);
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const card = document.activeElement;
+  if (!card.classList || !card.classList.contains('flip-card')) return;
+  e.preventDefault();
+  toggleCard(card);
+});
+
+function toggleCard(card) {
+  const img = card.querySelector('img');
+  const captionEl = card.querySelector('.caption');
+
+  const frontSrc = card.dataset.front;
+  const backSrc  = card.dataset.back;
+
+  const frontCaption = card.dataset.frontCaption ?? 'Original';
+  const backCaption  = card.dataset.backCaption  ?? 'DeLeaker';
+
+  // Determine current state by comparing current src
+  const showingFront = img.getAttribute('src') === frontSrc || img.getAttribute('src') === (card.dataset.current || frontSrc);
+
+  if (showingFront) {
+    img.setAttribute('src', backSrc);
+    img.setAttribute('alt', backCaption);
+    captionEl.textContent = backCaption;
+    card.dataset.current = backSrc;
+    card.setAttribute('aria-pressed', 'true');
+  } else {
+    img.setAttribute('src', frontSrc);
+    img.setAttribute('alt', frontCaption);
+    captionEl.textContent = frontCaption;
+    card.dataset.current = frontSrc;
+    card.setAttribute('aria-pressed', 'false');
+  }
+
+  // optional: small visual feedback
+  card.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.995)' }, { transform: 'scale(1)' }], { duration: 150 });
+}
+</script>
+
+
 
 
 
