@@ -142,16 +142,3 @@ $(document).ready(function() {
 })
 
 
-document.addEventListener('DOMContentLoaded', function() {
-  
-  // Find ALL flip cards
-  const cards = document.querySelectorAll('.flip-card');
-  
-  //Loop over each one and add the click listener
-  cards.forEach(card => {
-    card.addEventListener('click', function() {
-      // 'this' refers to the specific card that was clicked
-      this.classList.toggle('flipped');
-    });
-  });
-});
