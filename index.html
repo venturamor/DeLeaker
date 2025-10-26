@@ -166,8 +166,8 @@ x<!DOCTYPE html>
   .flip-card {
     /* Makes the card square and responsive */
     aspect-ratio: 1 / 1;
-   -webkit-perspective: 1000px;
-    perspective: 1000px;
+   /* -webkit-perspective: 1000px; */ /* Removed for "no flip" */
+   /* perspective: 1000px; */ /* Removed for "no flip" */
     cursor: pointer;
   }
 
@@ -175,11 +175,11 @@ x<!DOCTYPE html>
     position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.7s;
+    /* transition: transform 0.7s; */ /* Removed for "no flip" */
     /* This enables 3D space */
-   -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-   will-change: transform;
+   /* -webkit-transform-style: preserve-3d; */ /* Removed for "no flip" */
+   /* transform-style: preserve-3d; */ /* Removed for "no flip" */
+   /* will-change: transform; */ /* Removed for "no flip" */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     overflow: hidden;
@@ -187,14 +187,17 @@ x<!DOCTYPE html>
 
 
   /* This rule works with your 'onclick' JavaScript */
-  .flip-card.flipped .flip-inner {
-   -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+  /* Replaced flip transform with simple show/hide */
+  .flip-card.flipped .flip-front {
+    display: none;
+  }
+  .flip-card.flipped .flip-back {
+    display: block;
   }
 
 
   /* MODIFICATION #1:
-    Added will-change and removed !important.
+    Removed transform-related properties
   */
   .flip-front,
   .flip-back {
@@ -203,27 +206,27 @@ x<!DOCTYPE html>
     height: 100%;
     left: 0;
     top: 0;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    will-change: transform; /* Add this for performance */
+    /* -webkit-backface-visibility: hidden; */ /* Removed as part of "no flip" */
+    /* backface-visibility: hidden; */ /* Removed as part of "no flip" */
+    /* will-change: transform; */ /* Removed as part of "no flip" */
   }
 
-  /* MODIFICATION #2: (THE MAIN FIX)
-    Un-commented the transform. This forces the browser 
-    to respect the backface-visibility of this element.
+  /* MODIFICATION #2: 
+    Removed transform, added display: block
   */
   .flip-front {
-    -webkit-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    /* z-index: 1; */ /* Sometimes helpful, but try without it first */
+    /* -webkit-transform: rotateY(0deg); */ /* Removed as part of "no flip" */
+    /* transform: rotateY(0deg); */ /* Removed as part of "no flip" */
+    display: block; /* Show by default */
   }
 
   /* MODIFICATION #3:
-    Removed !important. It's not necessary.
+    Removed transform, added display: none
   */
   .flip-back {
-    -webkit-transform: rotateY(180deg);
-    transform: rotateY(180deg);
+    /* -webkit-transform: rotateY(180deg); */ /* Removed per "no transform to the back image" */
+    /* transform: rotateY(180deg); */ /* Removed per "no transform to the back image" */
+    display: none; /* Hide by default */
   }
 
 
@@ -234,8 +237,8 @@ x<!DOCTYPE html>
     height: 100%;
     object-fit: cover;
     display: block;
-   -webkit-backface-visibility: hidden;
-   backface-visibility: hidden;
+   /* -webkit-backface-visibility: hidden; */ /* Removed as part of "no flip" */
+   /* backface-visibility: hidden; */ /* Removed as part of "no flip" */
   }
 
 
@@ -251,11 +254,6 @@ x<!DOCTYPE html>
     font-size: 0.9rem;
     font-weight: 500;
     padding: 8px;
-    margin: 0;
-    text-align: center;
-  }
-</style>
-
 
 </head>
 <body>
